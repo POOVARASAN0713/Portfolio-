@@ -1,0 +1,165 @@
+.particle {
+    position: fixed;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 9999;
+    animation: particle-burst 1s ease-out forwards;
+}
+
+@keyframes particle-burst {
+    0% {
+        transform: translate(0, 0) scale(1);
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+    }
+}
+
+@keyframes fade-in {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes slide-up {
+    from { 
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to { 
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-20px); }
+}
+
+@keyframes bounce-gentle {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+}
+
+.animate-fade-in {
+    animation: fade-in 0.6s ease-out;
+}
+
+.animate-slide-up {
+    animation: slide-up 0.6s ease-out;
+}
+
+.animate-float {
+    animation: float 3s ease-in-out infinite;
+}
+
+.animate-bounce-gentle {
+    animation: bounce-gentle 2s ease-in-out infinite;
+}
+
+@keyframes slide-down {
+    from { 
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to { 
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.animate-slide-down {
+    animation: slide-down 0.3s ease-out;
+}
+
+.scroll-to-top {
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    z-index: 1000;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+}
+
+.scroll-to-top.visible {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* Profile photo on Home */
+.profile-photo {
+    object-fit: cover;
+}
+
+.profile-fallback {
+    background: linear-gradient(to bottom right, #3b82f6, #9333ea);
+    font-weight: 700;
+    font-size: 2.5rem;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+/* Resume page styles */
+.resume-pdf-wrapper {
+    min-height: 80vh;
+}
+
+.resume-pdf-iframe {
+    width: 100%;
+    height: 85vh;
+    min-height: 600px;
+    border: none;
+}
+
+.resume-section-title {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: #2563eb;
+    margin-bottom: 0.5rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.resume-section-item {
+    margin-bottom: 0.35rem;
+}
+
+.resume-tech {
+    font-size: 0.9rem;
+    color: #6b7280;
+}
+
+.resume-bullets {
+    margin: 0.25rem 0 0 1rem;
+    padding-left: 0.5rem;
+}
+
+.resume-skills-grid {
+    display: grid;
+    gap: 0.25rem;
+}
+
+/* Print: hide nav/footer when printing resume page */
+@media print {
+    nav,
+    footer,
+    .scroll-to-top {
+        display: none !important;
+    }
+
+    .resume-pdf-wrapper {
+        min-height: auto;
+        height: 100vh;
+    }
+
+    .resume-pdf-iframe {
+        height: 100vh;
+        min-height: 0;
+    }
+}
